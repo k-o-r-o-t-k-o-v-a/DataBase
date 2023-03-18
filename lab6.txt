@@ -1,0 +1,195 @@
+use delivery;
+
+shop_id1 = ObjectId()
+shop_id2 = ObjectId()
+shop_id3 = ObjectId()
+shop_id4 = ObjectId()
+shop_id5 = ObjectId()
+
+db.shop.insertMany([
+  {
+    "_id": shop_id5,
+    "name": "shop_name",
+    "description": "shop 5",
+    "address": "Savush"
+  },
+  {
+    "_id": shop_id4,
+    "name": "shop_name",
+    "description": "shop 4",
+    "address": "Savush"
+  },
+  {
+    "_id": shop_id3,
+    "name": "shop_name",
+    "description": "shop 3",
+    "address": "Savush"
+  },
+  {
+    "_id": shop_id2,
+    "name": "shop_name",
+    "description": "shop 2",
+    "address": "Savush"
+  },
+  {
+    "_id": shop_id1,
+    "name": "shop_name",
+    "description": "shop 1",
+    "address": "Savush"
+  }
+]);
+
+
+salesman_id1 = ObjectId()
+
+db.salesman.insertMany([
+  {
+    "_id": salesman_id1,
+    "full_name": "Best",
+    "age": 20,
+    "username": "salesman",
+    "password": "qwerty",
+    "shop_id": shop_id1
+  }
+]);
+
+customer_id1 = ObjectId()
+customer_id2 = ObjectId()
+customer_id3 = ObjectId()
+customer_id4 = ObjectId()
+customer_id5 = ObjectId()
+
+db.customer.insertMany([
+  {
+    "_id": customer_id1,
+    "full_name": "Ekaterina",
+    "age": 20,
+    "username": "Korotkova",
+    "password": "qwerty"
+  },
+  {
+    "_id": customer_id2,
+    "full_name": "Irina",
+    "age": 20,
+    "username": "Korotkova",
+    "password": "qwerty"
+  },
+  {
+    "_id": customer_id3,
+    "full_name": "Nastya",
+    "age": 20,
+    "username": "Shulyak",
+    "password": "qwerty"
+  },
+  {
+    "_id": customer_id4,
+    "full_name": "Egor",
+    "age": 20,
+    "username": "Savkovskij",
+    "password": "qwerty"
+  },
+  {
+    "_id": customer_id5,
+    "full_name": "Artem",
+    "age": 20,
+    "username": "Korotkova",
+    "password": "qwerty"
+  }
+]);
+
+order_id1 = ObjectId()
+
+db.order.insertMany([
+  {
+    "_id": order_id1,
+    "full_name": "Order 1",
+    "shop_id": shop_id1,
+    "customer_id": customer_id1,
+    "salesman_id": salesman_id1
+  }
+]);
+
+product_id1 = ObjectId()
+product_id2 = ObjectId()
+product_id3 = ObjectId()
+product_id4 = ObjectId()
+product_id5 = ObjectId()
+
+db.product.insertMany([
+  {
+    "_id": product_id1,
+    "full_name": "Potato",
+    "shop_id": shop_id1
+  },
+  {
+    "_id": product_id2,
+    "full_name": "Tomato",
+    "shop_id": shop_id2
+  },
+  {
+    "_id": product_id3,
+    "full_name": "Cucumber",
+    "shop_id": shop_id3
+  },
+  {
+    "_id": product_id4,
+    "full_name": "Carrot",
+    "shop_id": shop_id4
+  },
+  {
+    "_id": product_id5,
+    "full_name": "Carrot",
+    "shop_id": shop_id5
+  }
+]);
+
+order_product_id1 = ObjectId()
+order_product_id2 = ObjectId()
+order_product_id3 = ObjectId()
+
+db.order_product.insertMany([
+  {
+    "_id": order_product_id1,
+    "product_id": product_id1,
+    "order_id": order_id1
+  },
+  {
+    "_id": order_product_id2,
+    "product_id": product_id2,
+    "order_id": order_id2
+  },
+  {
+    "_id": order_product_id3,
+    "product_id": product_id3,
+    "order_id": order_id3
+  }
+]);
+
+deliveryman_id1 = ObjectId()
+
+db.deliveryman.insertMany([
+  {
+    "_id": deliveryman_id1,
+    "full_name": "Best",
+    "age": 20,
+    "username": "deliveryman",
+    "password": "qwerty",
+    "shop_id": shop_id1
+  }
+]);
+
+
+deliveryman_customer_id1 = ObjectId()
+
+db.deliveryman_customer.insertMany([
+  {
+    "_id": deliveryman_customer_id1,
+    "customer_id": customer_id1,
+    "deliveryman_id": deliveryman_id1
+  }
+]);
+
+db.name_shop.createIndex({
+    "full_name": 1,
+    "shop_name": 1
+})
